@@ -18,7 +18,7 @@ public class ConvertInvoice {
             JsonElement json = gson.fromJson(reader, JsonElement.class);
             String jsonInString = gson.toJson(json);
 
-            for (int n = 0; n <= 10; n++){
+            for (int n = 0; n <= 1; n++){
                 System.out.println(jsonInString);
                 try {
                     Thread.sleep(1000);
