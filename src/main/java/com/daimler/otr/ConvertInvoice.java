@@ -10,10 +10,10 @@ public class ConvertInvoice {
 
     public static void main(String[] args) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-//        ConvertInvoice ci = new ConvertInvoice();
+        ConvertInvoice ci = new ConvertInvoice();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                Thread.currentThread().getContextClassLoader().getResourceAsStream("data/0b406468-5d73-4fd6-8869-c33c0fec8f0c.json")))
+                ci.getFileFromResources("data/0b406468-5d73-4fd6-8869-c33c0fec8f0c.json")))
         ) {
             JsonElement json = gson.fromJson(reader, JsonElement.class);
             String jsonInString = gson.toJson(json);
@@ -32,8 +32,8 @@ public class ConvertInvoice {
         }
     }
 
-//    private InputStream getFileFromResources(String fileName) {
-//        return this.getClass().getResourceAsStream(fileName);
+    private InputStream getFileFromResources(String fileName) {
+        return this.getClass().getClassLoader().getResourceAsStream(fileName);
 
 //        ClassLoader classLoader = getClass().getClassLoader();
 //
@@ -43,6 +43,6 @@ public class ConvertInvoice {
 //        } else {
 //            return new File(resource.getFile());
 //        }
-//    }
+    }
 
 }
